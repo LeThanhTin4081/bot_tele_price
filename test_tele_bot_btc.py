@@ -336,8 +336,9 @@ def check_incoming_messages(last_update_id):
 
                 if text == "/start":
                     print(f"📩 Nhận lệnh /start từ {user_name}")
-                    # Đã bỏ phần giới thiệu theo yêu cầu
-                    pass
+                    # SỬA: Gửi tin nhắn chào mừng
+                    msg_chao = f"Xin chào {user_name}! 👋\nBot đang theo dõi giá BTC & ETH 24/7.\nSẽ báo ngay khi biến động mạnh!"
+                    send_telegram(msg_chao, user_chat_id)
 
         return last_update_id
     except Exception:
@@ -346,6 +347,7 @@ def check_incoming_messages(last_update_id):
 
 def main():
     print("🤖 Bot Crypto PRO (Nến Nhật) đang chạy...")
+    send_telegram("🔔 Test: Bot đã kết nối thành công!", CHAT_ID)
 
     # Gửi tin khởi động vào nhóm
     last_btc = get_futures_price("BTCUSDT")
